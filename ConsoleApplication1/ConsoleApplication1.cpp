@@ -14,8 +14,10 @@ int main()
 	in.open("examplefile.txt");
 	if (in) {
 		while (!in.eof()) {
-			char c;
-			in.read(&c,1);
+			char c = in.get();
+			if (in.fail()) {
+				break;
+			}
 			cout << c;
 		}
 	}
