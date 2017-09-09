@@ -10,19 +10,43 @@ using namespace std;
 
 int main()
 {
+	int num = 0;
+	char c;
+	bool flag1 = false;
+	bool flag2 = false;
+	bool flag = false;
 	ifstream in;
 	in.open("examplefile.txt");
 	if (in) {
 		while (!in.eof()) {
-			char c = in.get();
-			if (in.fail()) {
+			c = in.get();
+			if(in.fail())
+			{
 				break;
 			}
-			cout << c;
+			if (c >= 'a'&&c <= 'z' || c >= 'A'&&c <= 'Z') {
+				flag2 = flag1;
+				flag1 = true;
+			}
+			else if (c == ' ') {
+				flag2 = flag1;
+				flag1 = false;
+			}
+			else {
+				cout << "file error";
+				return 0;
+			}
+			if (flag2 == false && flag1 == true) {
+				flag = true;
+			}
+			if (flag) {
+				num++;
+				flag = false;
+			}
 		}
 	}
 	in.close();
-	cout << "hello world!";
+	cout << num;
 	getchar();
     return 0;
 }
