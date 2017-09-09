@@ -10,7 +10,7 @@ using namespace std;
 int main()
 {
 	ofstream examplefile("examplefile.txt");
-	if (examplefile.is_open) {
+	if (examplefile.is_open()) {
 		examplefile << "line1\n";
 		examplefile << "line2\n";
 	}
